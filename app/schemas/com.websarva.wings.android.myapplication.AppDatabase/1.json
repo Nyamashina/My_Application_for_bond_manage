@@ -1,0 +1,100 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "0a7aad09c19e99cff7e452d10ae494f2",
+    "entities": [
+      {
+        "tableName": "SavedBond",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `label` TEXT, `usdJpyRate` REAL, `purchasePrice` REAL, `valuation` REAL, `interestRate` REAL, `yield` REAL, `interestPaymentDate` INTEGER, `redemptionDate` INTEGER, `issuerRating` TEXT, `remainingYears` REAL, `quantity` REAL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "label",
+            "columnName": "label",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "usdJpyRate",
+            "columnName": "usdJpyRate",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "purchasePrice",
+            "columnName": "purchasePrice",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "valuation",
+            "columnName": "valuation",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "interestRate",
+            "columnName": "interestRate",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "yield",
+            "columnName": "yield",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "interestPaymentDate",
+            "columnName": "interestPaymentDate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "redemptionDate",
+            "columnName": "redemptionDate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "issuerRating",
+            "columnName": "issuerRating",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "remainingYears",
+            "columnName": "remainingYears",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quantity",
+            "columnName": "quantity",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0a7aad09c19e99cff7e452d10ae494f2')"
+    ]
+  }
+}

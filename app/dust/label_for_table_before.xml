@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="16dp"
+    android:layout_marginTop="8dp"
+    android:fillViewport="true"
+    android:outlineSpotShadowColor="@color/black">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/editText_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:text="ラベル（銘柄名）"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/editText_USD_JPY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="購入時ドル円"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/editText_tannka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="取得単価"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            app:layout_constraintLeft_toRightOf="@id/editText_USD_JPY"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/editText_hyoka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="評価額"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            app:layout_constraintLeft_toRightOf="@+id/editText_tannka"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/editText_riritu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="利率"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            app:layout_constraintLeft_toRightOf="@id/editText_hyoka"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/editText_rimawari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="利回り"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/editText_ribaraibi"
+            android:layout_width="wrap_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="利払い日"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize" />
+        　　　　　
+
+        <TextView
+            android:id="@+id/editText_syoukann"
+            android:layout_width="wrap_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="償還日"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        　　　　　
+
+        <TextView
+            android:id="@+id/editText_kakuduke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="発行体格付け"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/editText_nennsuu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="残存年数"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/editText_suuryou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:background="@drawable/edit_text_background"
+            android:minHeight="48dp"
+            android:text="保有数量"
+            android:textColorHint="#000000"
+            app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+            tools:ignore="VisualLintTextFieldSize" />
+
+
+    </LinearLayout>
+</HorizontalScrollView>

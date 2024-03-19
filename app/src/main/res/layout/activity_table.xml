@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentRight="true"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:visibility="visible"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name">
+
+        <TextView
+            android:id="@+id/setsumei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="債券をタップで選択して操作を決めてください"
+            android:textColorHint="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ButtonLayout"
+            tools:ignore="VisualLintTextFieldSize" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/col_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="ラベル（銘柄名）"
+                android:textColorHint="@color/colorAccent"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:id="@+id/col_USD_JPY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="購入時ドル円"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/col_tannka"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="取得単価"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                app:layout_constraintLeft_toRightOf="@id/editText_USD_JPY"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/col_hyoka"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="評価額"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                app:layout_constraintLeft_toRightOf="@+id/editText_tannka"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/col_riritu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="利率"
+
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                app:layout_constraintLeft_toRightOf="@id/editText_hyoka"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/col_rimawari"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="利回り"
+                android:textColorHint="#000000"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/col_ribaraibi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="利払い日"
+                android:textColorHint="#000000"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize" />
+            　　　　　
+
+            <TextView
+                android:id="@+id/col_syoukann"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="償還日"
+                android:textColorHint="#000000"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            　　　　　
+
+            <TextView
+                android:id="@+id/col_kakuduke"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="発行体格付け"
+                android:textColorHint="#000000"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/col_nennsuu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="残存年数"
+                android:textColorHint="#000000"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/col_suuryou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="autofillHints"
+                android:background="@drawable/edit_text_background"
+                android:minHeight="48dp"
+                android:text="保有数量"
+                android:textColorHint="#000000"
+                app:layout_constraintBaseline_toTopOf="@+id/recyclerView"
+                tools:ignore="VisualLintTextFieldSize" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:visibility="visible"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp"
+            tools:listitem="@layout/item_bond" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetRight="10dp"
+            android:text="編集" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetRight="10dp"
+            android:text="削除" />
+
+        <Button
+            android:id="@+id/backToMenuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetRight="10dp"
+            android:text="メニューに戻る"
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

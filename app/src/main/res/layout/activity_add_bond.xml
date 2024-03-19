@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:visibility="visible"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name">
+
+        <TextView
+            android:id="@+id/setsumei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="保有する債券を登録できます"
+            android:textColorHint="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ButtonLayout"
+            tools:ignore="VisualLintTextFieldSize" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/editText_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="ラベル（銘柄名）"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+        <!-- Other EditTexts for each field (b. to k.) go here -->
+        <EditText
+            android:id="@+id/editText_USD_JPY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="購入時ドル円(円）"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/editText_tannka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="取得単価()"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/editText_hyoka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="評価額()"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/editText_riritu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="利率(%)"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/editText_rimawari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="利回り(%)"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/editText_ribaraibi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="利払い日"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+        　　　　　
+
+        <EditText
+            android:id="@+id/editText_syoukann"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="償還日"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        　　　　　
+
+        <EditText
+            android:id="@+id/editText_kakuduke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="発行体格付け"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/editText_nennsuu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="残存年数（年）"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/editText_suuryou"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="autofillHints"
+            android:hint="保有数量"
+            android:minHeight="48dp"
+            android:textColorHint="#8D6E63"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <LinearLayout
+            android:id="@+id/ButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+
+            <Button
+                android:id="@+id/button_save_bond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保存"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/backToMenuButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="メニューに戻る"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
