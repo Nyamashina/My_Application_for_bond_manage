@@ -1,10 +1,13 @@
 package com.websarva.wings.android.myapplication
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +19,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class TableActivity : AppCompatActivity() {
 
+class TableActivity : AppCompatActivity() {
+    private var selectedBond: Bond? = null
+    /*
+    private inner class ItemClickListener : View.OnClickListener{
+        override fun onClick(view: View?) {
+            selectedBond?.let{val position = recyclerView.getChildAdapterPosition(view)
+                selectedBond =
+
+            }?: run {
+                selectedBond = null
+            }
+        }
+    }
+
+     */
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // メニューリソースを使用してメニューをインフレートする
@@ -25,16 +42,14 @@ class TableActivity : AppCompatActivity() {
         return true
     }
 
-    private var selectedBond: Bond? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_table)
 
         //データベースとDAOの取得,
-        val db = AppDatabase.getDatabase(applicationContext)
-        val bondDao = db.bondDao()
-        val factory = BondViewModelFactory(bondDao)
+        val factory = BondViewModelFactory(AppDatabase.getDatabase(applicationContext).bondDao())
         val bondViewModel = ViewModelProvider(this, factory).get(BondViewModel::class.java)
 
 
@@ -48,15 +63,12 @@ class TableActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         bondViewModel.bondListLiveData.observe(this) { bonds ->
-            val adapter = BondAdapter(bonds){ selectedBond->
-                this.selectedBond = selectedBond
-                Log.d("TableActivity", "Selected bond: $selectedBond")
-                // 選択状態のUI更新など
-            }
-            recyclerView.adapter = adapter
-            Log.d("Tableactivity","adapter,itemcount : ${adapter},${adapter.itemCount}")
-            adapter.notifyDataSetChanged()
+            // アダプターのデータセットを更新
+            adapter.updateDataSet(bonds)
+            Log.d("TableActivity", "Adapter item count: ${adapter.itemCount}")
         }
+
+
 
         //recyclerView.isNestedScrollingEnabled = true
 
@@ -178,6 +190,101 @@ class TableActivity : AppCompatActivity() {
             deleteSelectedBond()
         }
 　　　　　の部分に対応。
+         */
+
+    }
+
+
+
+    //item_bond.xml用
+    class BondAdapter(private var bondList: List<Bond>, private val onItemClicked: (Bond) -> Unit) : RecyclerView.Adapter<BondViewHolder>() {
+        var selectedPosition = RecyclerView.NO_POSITION
+
+        override fun getItemCount(): Int {
+            return bondList.size
+        }
+        fun updateDataSet(newBondList: List<Bond>) {
+            this.bondList = newBondList
+            notifyDataSetChanged()
+        }
+
+        fun clearSelection() {
+            Log.d("Adapter","clearSelection")
+            if (selectedPosition != RecyclerView.NO_POSITION) {
+                val previousSelectedPosition = selectedPosition
+                selectedPosition = RecyclerView.NO_POSITION
+                notifyItemChanged(previousSelectedPosition)
+            }
+        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BondViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_bond, parent, false)
+            Log.d("Adapter","onCreateViewHolder")
+
+            val viewHolder = BondViewHolder(view)
+            view.setOnClickListener {
+                // ViewHolderの現在の位置を取得
+                val position = viewHolder.adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val selectedBond = bondList[position]
+                    onItemClicked(selectedBond)
+                    // 以前の選択をクリア
+                    clearSelection()
+                    // 新しい選択を設定
+                    selectedPosition = position
+                    // アイテムの背景色を更新
+                    notifyItemChanged(position)
+                    // クリックされたアイテムの詳細をLogやToastで表示
+                    Log.d("Adapter", "Clicked on position: $position")
+                    Toast.makeText(view.context, "Selected: ${selectedBond.label}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            return viewHolder
+        }
+
+
+
+
+        override fun onBindViewHolder(holder: BondViewHolder, position: Int) {
+            Log.d("Adapter","onBindViewHolder")
+            val bond = bondList[position]
+            holder.bind(bond)
+            Log.d("Adapter","onBindViewHolder label:${holder.label.text},${holder.itemView}")
+
+
+            // アイテムの選択状態を設定
+            holder.itemView.setBackgroundColor(if (selectedPosition == position) Color.BLUE else Color.TRANSPARENT)
+
+            // アイテムのクリックイベント
+            holder.itemView.setOnClickListener {
+                Log.d("Adapter","onBindViewHolder on click,position:${position}")
+                if (selectedPosition != RecyclerView.NO_POSITION) {
+                    notifyItemChanged(selectedPosition)
+                }
+
+                val currentPosition = holder.adapterPosition// 現在のアイテムビューの位置を取得
+                val selectedBond = bondList[currentPosition]
+
+                onItemClicked(selectedBond)
+                selectedPosition = currentPosition
+                notifyItemChanged(selectedPosition)
+            }
+        }
+
+
+
+
+
+        /*
+        inner class LongClickViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            init {
+                view.setOnLongClickListener {
+                    onItemLongClick(bondList[adapterPosition])
+                    true
+                }
+            }
+        }
+
          */
 
     }
